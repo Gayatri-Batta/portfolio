@@ -37,6 +37,14 @@ const Landing = () => {
           <h2 className="landing-info-h2">
             <div className="landing-h2-1">{config.developer.title}</div>
           </h2>
+          <a
+            href={config.developer.resume}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="landing-resume-mobile"
+          >
+            Resume ↗
+          </a>
         </div>
       </div>
     </div>

@@ -161,7 +161,7 @@ h2.landing-info-h2 {
   margin-left: -5px;
 }
 
-/* Resume link */
+/* Resume link — desktop sidebar */
 .landing-resume {
   display: inline-block;
   font-size: 12px;
@@ -175,6 +175,11 @@ h2.landing-info-h2 {
 
 .landing-resume:hover {
   color: var(--accentColor);
+}
+
+/* Resume button — mobile only (hidden on desktop) */
+.landing-resume-mobile {
+  display: none;
 }
 
 /* ── Mobile ───────────────────────────────────────────────────── */
@@ -207,15 +212,15 @@ h2.landing-info-h2 {
 
   .landing-section {
     height: auto !important;
-    min-height: 100vh;
+    min-height: auto !important;
     max-width: 100vw;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 70px 15px 40px;
-    gap: 0;
+    justify-content: flex-start;
+    padding: 88px 15px 50px;
+    gap: 20px;
   }
 
   .landing-container {
@@ -225,6 +230,7 @@ h2.landing-info-h2 {
     display: flex;
     flex-direction: column;
     width: 100%;
+    gap: 0;
   }
 
   .landing-intro {
@@ -234,8 +240,8 @@ h2.landing-info-h2 {
     right: auto !important;
     bottom: auto !important;
     transform: none !important;
-    padding-top: 16px;
-    margin-bottom: 10px;
+    padding-top: 0;
+    margin-bottom: 8px;
     z-index: 10;
     text-align: center;
     width: 100% !important;
@@ -257,13 +263,13 @@ h2.landing-info-h2 {
     bottom: auto !important;
     transform: none !important;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 4px;
     z-index: 10;
-    padding-bottom: 20px;
+    padding-bottom: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6px;
+    gap: 0;
     width: 100% !important;
     order: 3;
     opacity: 1 !important;
@@ -293,6 +299,28 @@ h2.landing-info-h2 {
 
   .landing-info-h2::after {
     display: none;
+  }
+
+  .landing-resume-mobile {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 24px;
+    border: 1px solid rgba(34, 211, 238, 0.5);
+    border-radius: 999px;
+    color: var(--accentColor);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    margin-top: 18px;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .landing-resume-mobile:hover {
+    background: rgba(34, 211, 238, 0.08);
+    border-color: rgba(34, 211, 238, 0.8);
+    color: var(--accentColor);
   }
 }
 
