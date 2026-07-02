@@ -1,0 +1,37 @@
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 99999;
+  will-change: transform;
+}
+
+.cursor-dot {
+  width: 28px;
+  height: 28px;
+  background: radial-gradient(circle, rgba(200, 245, 255, 1) 0%, rgba(34, 211, 238, 0.85) 45%, transparent 70%);
+  border-radius: 50%;
+  box-shadow:
+    0 0 8px 4px rgba(34, 211, 238, 0.85),
+    0 0 22px 10px rgba(0, 180, 220, 0.5),
+    0 0 50px 24px rgba(0, 180, 220, 0.22),
+    0 0 80px 40px rgba(0, 100, 160, 0.08);
+}
+
+.cursor-ring {
+  display: none;
+}
+
+.cursor-dot--hidden,
+.cursor-ring--hidden {
+  opacity: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .cursor-dot,
+  .cursor-ring {
+    display: none;
+  }
+}

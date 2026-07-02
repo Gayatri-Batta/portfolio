@@ -1,0 +1,59 @@
+.about-section {
+  position: relative;
+  z-index: 20;
+  background-color: var(--backgroundColor);
+  padding: 120px 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.about-me {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  max-width: 56%;
+  text-align: right;
+}
+
+.about-label {
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--accentColor);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.about-description {
+  font-size: clamp(16px, 1.8vw, 22px);
+  font-weight: 500;
+  line-height: 1.7;
+  color: var(--textColor);
+  opacity: 0.85;
+}
+
+@media only screen and (max-width: 1024px) {
+  .about-section {
+    justify-content: center;
+    padding: 80px 0;
+  }
+
+  .about-me {
+    max-width: 100%;
+    text-align: left;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .about-section {
+    padding: 60px 0;
+  }
+
+  .about-me {
+    gap: 20px;
+  }
+
+  .about-description {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+}

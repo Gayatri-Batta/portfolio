@@ -1,0 +1,73 @@
+.social-icons {
+  position: fixed;
+  left: 28px;
+  bottom: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  z-index: 100;
+  opacity: 0;
+}
+
+.social-icons a {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(20, 12, 32, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 22px;
+  text-decoration: none;
+  transition: background 0.25s, border-color 0.25s, color 0.25s, transform 0.25s, box-shadow 0.25s;
+  backdrop-filter: blur(6px);
+}
+
+.social-icons a:hover {
+  background: rgba(34, 211, 238, 0.12);
+  border-color: rgba(34, 211, 238, 0.5);
+  color: var(--accentColor);
+  transform: translateY(-3px);
+  box-shadow: 0 0 18px rgba(34, 211, 238, 0.25);
+}
+
+.social-line {
+  display: none;
+}
+
+/* Fixed RESUME badge — always visible bottom-right */
+.resume-fixed {
+  position: fixed;
+  bottom: 32px;
+  right: 40px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 23px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  font-stretch: condensed;
+  text-transform: uppercase;
+  color: #eae5ec;
+  text-decoration: none;
+  z-index: 100;
+  opacity: 0;
+  transition: color 0.2s, opacity 0.3s;
+}
+
+.resume-fixed:hover {
+  color: var(--accentColor);
+}
+
+@media only screen and (max-width: 768px) {
+  .social-icons {
+    display: none;
+  }
+
+  .resume-fixed {
+    display: none;
+  }
+}

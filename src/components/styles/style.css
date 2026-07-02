@@ -1,0 +1,15 @@
+.hover-link {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  text-wrap: nowrap;
+}
+
+.hover-link span {
+  display: block;
+  transition: color 0.25s ease;
+}
+
+.hover-link:hover span {
+  color: var(--accentColor);
+}

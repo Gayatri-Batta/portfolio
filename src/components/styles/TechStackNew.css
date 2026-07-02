@@ -1,0 +1,264 @@
+.techstack-new {
+  padding: 100px 0;
+  position: relative;
+  z-index: 20;
+  background:
+    radial-gradient(ellipse 80% 70% at 50% 55%,
+      rgba(0, 60, 110, 0.45) 0%,
+      rgba(0, 30, 60, 0.25)  45%,
+      transparent             72%
+    )
+    var(--backgroundColor);
+  overflow: hidden;
+}
+
+/* Gradient fades at top/bottom */
+.techstack-new::before,
+.techstack-new::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 150px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.techstack-new::before {
+  top: 0;
+  background: linear-gradient(to bottom, var(--backgroundColor), transparent);
+}
+
+.techstack-new::after {
+  bottom: 0;
+  background: linear-gradient(to top, var(--backgroundColor), transparent);
+}
+
+/* ── Ambient glow layer ─────────────────────────────── */
+.techstack-blobs {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ts-blob {
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform, opacity;
+}
+
+/* Primary central orb — emanates from center, breathes slowly */
+.ts-blob-1 {
+  width: 900px;
+  height: 900px;
+  background: radial-gradient(
+    circle,
+    rgba(0, 120, 180, 0.45) 0%,
+    rgba(0, 80, 130, 0.25)  35%,
+    rgba(0, 40, 80, 0.10)   60%,
+    transparent 75%
+  );
+  filter: blur(60px);
+  top: 50%;
+  left: 50%;
+  margin-top: -450px;
+  margin-left: -450px;
+  animation: ts-breathe 10s ease-in-out infinite alternate;
+}
+
+/* Secondary glow — slightly offset so it feels alive, not static */
+.ts-blob-2 {
+  width: 600px;
+  height: 500px;
+  background: radial-gradient(
+    ellipse,
+    rgba(0, 180, 220, 0.22) 0%,
+    rgba(0, 120, 170, 0.10) 50%,
+    transparent 70%
+  );
+  filter: blur(80px);
+  top: 50%;
+  left: 50%;
+  margin-top: -250px;
+  margin-left: -300px;
+  animation: ts-float 14s ease-in-out infinite alternate;
+}
+
+/* No ts-blob-3 div needed — 2 blobs are enough for this effect */
+.ts-blob-3 { display: none; }
+
+@keyframes ts-breathe {
+  0%   { transform: scale(0.88); opacity: 0.72; }
+  100% { transform: scale(1.12); opacity: 1;    }
+}
+
+@keyframes ts-float {
+  0%   { transform: translate(0px,    0px)  scale(1);    opacity: 0.6; }
+  100% { transform: translate(-40px, -60px) scale(1.15); opacity: 0.9; }
+}
+
+.techstack-inner {
+  position: relative;
+  z-index: 2;
+}
+
+.techstack-new h2 {
+  font-size: clamp(48px, 5.5vw, 70px);
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 60px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: linear-gradient(135deg, #fff 40%, var(--accentColor) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.techstack-new h2 span {
+  -webkit-text-fill-color: var(--accentColor);
+}
+
+.tech-pyramid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  perspective: 700px;
+}
+
+.tech-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  transform-style: preserve-3d;
+}
+
+.tech-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 64px;
+  height: 72px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 12px;
+  transition: transform 0.22s ease, background 0.22s ease, border-color 0.22s ease,
+    box-shadow 0.22s ease;
+  text-decoration: none;
+}
+
+.tech-item {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.22s ease,
+    border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.tech-item:hover {
+  transform: translateY(-10px) translateZ(36px) scale(1.18);
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(34, 211, 238, 0.6);
+  box-shadow:
+    0 18px 40px rgba(0, 80, 140, 0.55),
+    0 6px 16px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(34, 211, 238, 0.3);
+  z-index: 20;
+}
+
+.tech-item img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  filter: brightness(1.05) saturate(1.1);
+  opacity: 0.95;
+  transition: filter 0.22s, opacity 0.22s;
+}
+
+.tech-item:hover img {
+  filter: brightness(1.2) saturate(1.3);
+  opacity: 1;
+}
+
+.tech-item span {
+  font-size: 9px;
+  letter-spacing: 0.3px;
+  color: #ffffff;
+  text-align: center;
+  max-width: 58px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: color 0.22s;
+}
+
+.tech-item:hover span {
+  color: #ffffff;
+}
+
+@media only screen and (max-width: 1200px) {
+  .tech-item {
+    width: 58px;
+    height: 66px;
+  }
+
+  .tech-item img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .techstack-new {
+    padding: 70px 0;
+  }
+
+  /* Flatten pyramid into a uniform wrapping grid */
+  .tech-pyramid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    perspective: none;
+    max-width: 100%;
+  }
+
+  /* Remove row containers from layout — items flow directly into the grid */
+  .tech-row {
+    display: contents;
+  }
+
+  .tech-item {
+    width: 60px;
+    height: 68px;
+  }
+
+  .tech-item img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .techstack-new h2 {
+    font-size: 36px;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+  }
+
+  .tech-item {
+    width: 48px;
+    height: 56px;
+  }
+
+  .tech-item img {
+    width: 20px;
+    height: 20px;
+  }
+}

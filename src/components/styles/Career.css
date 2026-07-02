@@ -1,0 +1,202 @@
+.career-section {
+  position: relative;
+  z-index: 20;
+  background-color: var(--backgroundColor);
+  padding: 100px 0;
+}
+
+.career-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, var(--backgroundColor));
+  pointer-events: none;
+  z-index: 1;
+}
+
+.career-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 2;
+}
+
+.career-heading {
+  font-size: clamp(34px, 4.2vw, 56px);
+  font-weight: 500;
+  margin-bottom: 50px;
+  text-align: center;
+  background: linear-gradient(135deg, #ffffff 0%, #22d3ee 60%, rgba(34, 211, 238, 0.5) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.career-heading span {
+  -webkit-text-fill-color: var(--accentColor);
+}
+
+.career-info {
+  --col-role: 240px;
+  --col-year: 200px;
+  --col-gap: 32px;
+  position: relative;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.career-line-track {
+  position: absolute;
+  left: calc(var(--col-role) + var(--col-gap) + var(--col-year) + (var(--col-gap) / 2));
+  top: 4px;
+  bottom: 4px;
+  width: 1px;
+}
+
+.career-line-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 0%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 180, 220, 1) 0%,
+    rgba(0, 180, 220, 0.95) 40%,
+    rgba(100, 220, 240, 0.7) 100%
+  );
+  box-shadow:
+    0 0 6px 2px rgba(0, 180, 220, 0.8),
+    0 0 18px 4px rgba(0, 150, 200, 0.45);
+  border-radius: 2px;
+}
+
+.career-dot {
+  position: absolute;
+  left: 50%;
+  top: 0%;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #a0eeff 0%, #00c8e0 55%, #0080b0 100%);
+  transform: translate(-50%, -50%);
+  animation: dot-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes dot-pulse {
+  0%   {
+    box-shadow:
+      0 0 0 3px rgba(100, 220, 240, 0.25),
+      0 0 14px 4px rgba(0, 180, 220, 0.6),
+      0 0 32px 10px rgba(0, 120, 180, 0.3);
+    opacity: 1;
+  }
+  50%  {
+    box-shadow:
+      0 0 0 6px rgba(100, 220, 240, 0.12),
+      0 0 28px 10px rgba(0, 180, 220, 0.85),
+      0 0 60px 20px rgba(0, 120, 180, 0.45);
+    opacity: 0.75;
+  }
+  100% {
+    box-shadow:
+      0 0 0 3px rgba(100, 220, 240, 0.25),
+      0 0 14px 4px rgba(0, 180, 220, 0.6),
+      0 0 32px 10px rgba(0, 120, 180, 0.3);
+    opacity: 1;
+  }
+}
+
+.career-info-box {
+  display: grid;
+  grid-template-columns: var(--col-role) var(--col-year) 1fr;
+  gap: var(--col-gap);
+  align-items: start;
+  padding: 48px 0;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.career-role h4 {
+  font-size: clamp(20px, 1.8vw, 26px);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--textColor);
+  margin-bottom: 8px;
+}
+
+.career-role h5 {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--accentColor);
+  opacity: 0.8;
+}
+
+.career-year {
+  font-size: clamp(14px, 1.3vw, 18px);
+  font-weight: 500;
+  color: rgba(234, 229, 236, 0.92);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-top: 4px;
+}
+
+.career-info-box > p {
+  font-size: 15px;
+  max-width: 400px;
+  color: rgba(234, 229, 236, 0.5);
+  line-height: 1.6;
+}
+
+@media only screen and (max-width: 900px) {
+  .career-info-box {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 28px 0;
+  }
+
+  .career-line-track,
+  .career-dot {
+    display: none;
+  }
+
+  .career-year {
+    font-size: 30px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .career-section {
+    padding: 60px 0;
+  }
+
+  .career-heading {
+    font-size: 32px;
+    margin-bottom: 36px;
+  }
+
+  .career-info {
+    padding: 0 4px;
+  }
+
+  .career-info-box {
+    padding: 20px 0;
+    gap: 6px;
+  }
+
+  .career-role h4 {
+    font-size: 18px;
+  }
+
+  .career-year {
+    font-size: 22px;
+  }
+
+  .career-info-box > p {
+    font-size: 14px;
+  }
+}
